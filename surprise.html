@@ -44,7 +44,6 @@
       margin: 10px 0 14px;
       font-size: clamp(22px, 6vw, 40px);
       line-height: 1.12;
-      word-break: break-word;
     }
 
     /* Photos grid */
@@ -59,11 +58,10 @@
       width: 100%;
       background: rgba(255,255,255,.65);
       border-radius: 16px;
-      overflow: hidden; /* keeps images inside rounded corners */
+      overflow: hidden;
       box-shadow: 0 10px 24px rgba(0,0,0,.10);
     }
 
-    /* frame prevents any overflow/clipping outside card */
     .photo-frame {
       width: 100%;
       aspect-ratio: 4 / 3;
@@ -99,13 +97,13 @@
       font-weight: 900;
       cursor: pointer;
       box-shadow: 0 10px 24px rgba(0,0,0,.14);
-      -webkit-tap-highlight-color: transparent;
       background: #ff3b7a;
       color: #fff;
+      -webkit-tap-highlight-color: transparent;
     }
     button:active { transform: scale(0.98); }
 
-    /* floating hearts */
+    /* Floating hearts */
     .heart {
       position: fixed;
       bottom: -40px;
@@ -126,7 +124,7 @@
       to   { transform: scale(1); opacity: 1; }
     }
 
-    /* Mobile: 1 column + taller photo frames */
+    /* Mobile */
     @media (max-width: 640px) {
       .photos { grid-template-columns: 1fr; }
       .photo-frame { aspect-ratio: 3 / 4; }
@@ -136,7 +134,7 @@
 
 <body>
 
-  <div class="card" id="mainCard" style="display:none;">
+  <div class="card" id="mainCard">
     <div style="margin-bottom:12px;">
       <iframe
         style="border-radius:12px; width:100%;"
@@ -152,28 +150,28 @@
     <div class="photos">
       <div class="photo-item">
         <div class="photo-frame">
-          <img src="https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e" alt="Us 1">
+          <img src="w1.jpg" alt="Memory 1">
         </div>
         <div class="caption">Our first cute click 🤍</div>
       </div>
 
       <div class="photo-item">
         <div class="photo-frame">
-          <img src="https://images.unsplash.com/photo-1529333166437-7750a6dd5a70" alt="Us 2">
+          <img src="w2.jpg" alt="Memory 2">
         </div>
         <div class="caption">That day I couldn’t stop smiling ✨</div>
       </div>
 
       <div class="photo-item">
         <div class="photo-frame">
-          <img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1" alt="Us 3">
+          <img src="w3.jpg" alt="Memory 3">
         </div>
         <div class="caption">My favorite memory with you 💕</div>
       </div>
 
       <div class="photo-item">
         <div class="photo-frame">
-          <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9" alt="Us 4">
+          <img src="w4.jpg" alt="Memory 4">
         </div>
         <div class="caption">Us, just being us ❤️</div>
       </div>
@@ -218,9 +216,6 @@
     }
 
     setInterval(createHeart, 550);
-
-    // show main card automatically on this page
-    document.getElementById('mainCard').style.display = 'block';
   </script>
 
 </body>
