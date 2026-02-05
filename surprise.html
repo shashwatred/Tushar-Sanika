@@ -46,7 +46,6 @@
       line-height: 1.12;
     }
 
-    /* Photos grid */
     .photos {
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -55,7 +54,6 @@
     }
 
     .photo-item {
-      width: 100%;
       background: rgba(255,255,255,.65);
       border-radius: 16px;
       overflow: hidden;
@@ -103,7 +101,6 @@
     }
     button:active { transform: scale(0.98); }
 
-    /* Floating hearts */
     .heart {
       position: fixed;
       bottom: -40px;
@@ -124,7 +121,6 @@
       to   { transform: scale(1); opacity: 1; }
     }
 
-    /* Mobile */
     @media (max-width: 640px) {
       .photos { grid-template-columns: 1fr; }
       .photo-frame { aspect-ratio: 3 / 4; }
@@ -136,9 +132,10 @@
 
   <div class="card" id="mainCard">
     <div style="margin-bottom:12px;">
+      <!-- ✅ Heavenly – Cigarettes After Sex -->
       <iframe
         style="border-radius:12px; width:100%;"
-        src="https://open.spotify.com/track/5E02BgqYNN9VzafXrYP6Np?si=2cb367983ca04b0b"
+        src="https://open.spotify.com/embed/track/3IznIgmX3rdzYEz3I7trmO"
         height="80"
         frameBorder="0"
         allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
@@ -149,30 +146,19 @@
 
     <div class="photos">
       <div class="photo-item">
-        <div class="photo-frame">
-          <img src="w1.jpeg" alt="Memory 1">
-        </div>
+        <div class="photo-frame"><img src="w1.jpg" alt="Memory 1"></div>
         <div class="caption">Our first cute click 🤍</div>
       </div>
-
       <div class="photo-item">
-        <div class="photo-frame">
-          <img src="w2.jpeg" alt="Memory 2">
-        </div>
+        <div class="photo-frame"><img src="w2.jpg" alt="Memory 2"></div>
         <div class="caption">That day I couldn’t stop smiling ✨</div>
       </div>
-
       <div class="photo-item">
-        <div class="photo-frame">
-          <img src="w3.jpeg" alt="Memory 3">
-        </div>
+        <div class="photo-frame"><img src="w3.jpg" alt="Memory 3"></div>
         <div class="caption">My favorite memory with you 💕</div>
       </div>
-
       <div class="photo-item">
-        <div class="photo-frame">
-          <img src="w4.jpeg" alt="Memory 4">
-        </div>
+        <div class="photo-frame"><img src="w4.jpg" alt="Memory 4"></div>
         <div class="caption">Us, just being us ❤️</div>
       </div>
     </div>
@@ -211,7 +197,6 @@
       heart.style.left = Math.random() * 100 + 'vw';
       heart.style.animationDuration = (4 + Math.random() * 3) + 's';
       document.body.appendChild(heart);
-
       setTimeout(() => heart.remove(), 7000);
     }
 
