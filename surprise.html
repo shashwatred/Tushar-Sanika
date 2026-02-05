@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>Surprise 💝</title>
+
+  <style>
+    :root {
+      --bg1: #ffd6e7;
+      --bg2: #ffeef6;
+      --card: #ffffffcc;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      min-height: 100svh;
+      display: grid;
+      place-items: center;
+      padding:
+        calc(16px + env(safe-area-inset-top))
+        calc(16px + env(safe-area-inset-right))
+        calc(16px + env(safe-area-inset-bottom))
+        calc(16px + env(safe-area-inset-left));
+      background: radial-gradient(circle at top, var(--bg2), var(--bg1));
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+      overflow-x: hidden;
+    }
+
+    .card {
+      width: min(900px, 96vw);
+      background: var(--card);
+      backdrop-filter: blur(10px);
+      border-radius: 22px;
+      box-shadow: 0 18px 60px rgba(0,0,0,.15);
+      padding: clamp(16px, 4vw, 24px);
+      text-align: center;
+      animation: pop .35s ease;
+    }
+
+    h1 {
+      margin: 10px 0 14px;
+      font-size: clamp(22px, 6vw, 40px);
+      line-height: 1.12;
+    }
+
+    /* Photos grid */
+    .photos {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+      margin: 14px 0 10px;
+    }
+
+    .photo-item {
+      width: 100%;
+      background: rgba(255,255,255,.65);
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 10px 24px rgba(0,0,0,.10);
+    }
+
+    .photo-frame {
+      width: 100%;
+      aspect-ratio: 4 / 3;
+      overflow: hidden;
+    }
+
+    .photo-frame img {
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: cover;
+    }
+
+    .caption {
+      padding: 10px 10px 12px;
+      font-weight: 650;
+      opacity: .9;
+      font-size: 0.95rem;
+      text-align: center;
+    }
+
+    #message {
+      margin: 12px auto 8px;
+      max-width: 60ch;
+      font-size: clamp(1rem, 3.6vw, 1.08rem);
+      line-height: 1.45;
+    }
+
+    button {
+      padding: 14px 18px;
+      border: none;
+      border-radius: 999px;
+      font-weight: 900;
+      cursor: pointer;
+      box-shadow: 0 10px 24px rgba(0,0,0,.14);
+      background: #ff3b7a;
+      color: #fff;
+      -webkit-tap-highlight-color: transparent;
+    }
+    button:active { transform: scale(0.98); }
+
+    /* Floating hearts */
+    .heart {
+      position: fixed;
+      bottom: -40px;
+      font-size: 24px;
+      animation: floatUp linear forwards;
+      opacity: 0.95;
+      pointer-events: none;
+      z-index: 999;
+    }
+
+    @keyframes floatUp {
+      from { transform: translateY(0); opacity: 0.95; }
+      to   { transform: translateY(-115vh); opacity: 0; }
+    }
+
+    @keyframes pop {
+      from { transform: scale(.98); opacity: 0; }
+      to   { transform: scale(1); opacity: 1; }
+    }
+
+    /* Mobile */
+    @media (max-width: 640px) {
+      .photos { grid-template-columns: 1fr; }
+      .photo-frame { aspect-ratio: 3 / 4; }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="card" id="mainCard">
+    <div style="margin-bottom:12px;">
+      <iframe
+        style="border-radius:12px; width:100%;"
+        src="https://open.spotify.com/embed/track/2t8yVaLvJ0RenpXUIAC52d"
+        height="80"
+        frameBorder="0"
+        allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+        loading="lazy"></iframe>
+    </div>
+
+    <h1>Happy Valentine’s Day, Sanika ❤️</h1>
+
+    <div class="photos">
+      <div class="photo-item">
+        <div class="photo-frame">
+          <img src="w1.jpg" alt="Memory 1">
+        </div>
+        <div class="caption">Our first cute click 🤍</div>
+      </div>
+
+      <div class="photo-item">
+        <div class="photo-frame">
+          <img src="w2.jpg" alt="Memory 2">
+        </div>
+        <div class="caption">That day I couldn’t stop smiling ✨</div>
+      </div>
+
+      <div class="photo-item">
+        <div class="photo-frame">
+          <img src="w3.jpg" alt="Memory 3">
+        </div>
+        <div class="caption">My favorite memory with you 💕</div>
+      </div>
+
+      <div class="photo-item">
+        <div class="photo-frame">
+          <img src="w4.jpg" alt="Memory 4">
+        </div>
+        <div class="caption">Us, just being us ❤️</div>
+      </div>
+    </div>
+
+    <p id="message">
+      Sanika, you make my world brighter, warmer, and happier every single day.
+    </p>
+
+    <button onclick="changeMessage()">Click for a surprise 💌</button>
+
+    <br><br>
+    <p style="font-size:0.95rem; opacity:0.9;">This song reminds me of us 🤍</p>
+    <p style="margin-top:10px; font-size:1rem; opacity:0.95;">
+      Forever yours,<br><strong>Tushar</strong> ❤️
+    </p>
+  </div>
+
+  <script>
+    const messages = [
+      "Sanika, I’m so lucky to have you in my life 💖",
+      "Every heartbeat of mine smiles because of you 💕",
+      "Now that we’re together, every moment feels perfect ❤️",
+      "You are my today, my tomorrow, and my always 🌹",
+      "Being with you feels like home 🏡✨"
+    ];
+
+    function changeMessage() {
+      const msg = messages[Math.floor(Math.random() * messages.length)];
+      document.getElementById('message').innerText = msg;
+    }
+
+    function createHeart() {
+      const heart = document.createElement('div');
+      heart.className = 'heart';
+      heart.innerText = '❤️';
+      heart.style.left = Math.random() * 100 + 'vw';
+      heart.style.animationDuration = (4 + Math.random() * 3) + 's';
+      document.body.appendChild(heart);
+
+      setTimeout(() => heart.remove(), 7000);
+    }
+
+    setInterval(createHeart, 550);
+  </script>
+
+</body>
+</html>
