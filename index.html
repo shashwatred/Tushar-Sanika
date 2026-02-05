@@ -48,6 +48,7 @@
       border-radius: 22px;
       text-align: center;
       box-shadow: 0 18px 60px rgba(0,0,0,.15);
+      z-index: 1;
     }
 
     .art {
@@ -120,7 +121,24 @@
       width: min(380px, 90vw);
       margin: 0 auto;
       display: block;
+      border-radius: 16px;
+      box-shadow: 0 10px 30px rgba(0,0,0,.12);
     }
+
+    /* Surprise button (in result section) */
+    .surprise-btn {
+      position: static;
+      transform: none;
+      margin-top: 16px;
+      display: inline-block;
+      background: #111827;
+      color: white;
+      padding: 14px 18px;
+      border-radius: 999px;
+      font-weight: 900;
+    }
+    .surprise-btn:hover { filter: brightness(1.05); }
+    .surprise-btn:active { transform: scale(0.98); }
 
     @keyframes pop {
       from { transform: scale(.96); opacity: 0; }
@@ -188,6 +206,11 @@
         src="https://media.giphy.com/media/26ufdipQqU2lhNA4g/giphy.gif"
         alt="Fireworks"
       />
+
+      <!-- NEW BUTTON -->
+      <a class="surprise-btn" href="surprise.html">
+        I have a surprise for you click here
+      </a>
     </section>
   </main>
 
@@ -292,7 +315,7 @@
     /* ---------- YES CLICK ---------- */
     yesBtn.addEventListener("click", () => {
       zone.style.display = "none";
-      hint.style.display = "none";     // HIDE THE HINT
+      hint.style.display = "none";
       result.style.display = "block";
       resizeConfettiCanvas();
       fullScreenConfetti();
@@ -300,4 +323,3 @@
   </script>
 </body>
 </html>
-
