@@ -26,11 +26,7 @@
       place-items: center;
       background: radial-gradient(circle at top, var(--bg2), var(--bg1));
       font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
-
-      /* ✅ allow vertical scroll, prevent horizontal */
-      overflow-x: hidden;
-      overflow-y: auto;
-
+      overflow: hidden;
       padding:
         calc(16px + env(safe-area-inset-top))
         calc(16px + env(safe-area-inset-right))
@@ -38,7 +34,6 @@
         calc(16px + env(safe-area-inset-left));
     }
 
-    /* ✅ Confetti canvas stays fixed and never blocks scroll/taps */
     #confettiCanvas {
       position: fixed;
       inset: 0;
@@ -57,9 +52,6 @@
       text-align: center;
       box-shadow: 0 18px 60px rgba(0,0,0,.15);
       z-index: 1;
-
-      /* ✅ prevent any internal overflow clipping */
-      overflow: visible;
     }
 
     .art {
@@ -75,6 +67,7 @@
       line-height: 1.1;
     }
 
+    /* Button zone */
     .button-zone {
       position: relative;
       width: min(520px, 100%);
@@ -130,11 +123,8 @@
       margin: 10px 0;
     }
 
-    /* ✅ GIF will never clip */
     .fireworks {
-      width: min(420px, 100%);
-      max-width: 100%;
-      height: auto;
+      width: min(380px, 100%);
       margin: 0 auto;
       display: block;
       border-radius: 16px;
@@ -163,7 +153,6 @@
     @media (max-width: 420px) {
       #yesBtn { left: 6%; }
       #noBtn { left: 56%; }
-      .button-zone { height: 200px; }
     }
   </style>
 </head>
@@ -172,6 +161,7 @@
   <canvas id="confettiCanvas"></canvas>
 
   <main class="card">
+    <!-- Cute animal SVG -->
     <svg class="art" viewBox="0 0 320 240" xmlns="http://www.w3.org/2000/svg">
       <defs>
         <linearGradient id="fur" x1="0" x2="1">
@@ -220,11 +210,9 @@
 
     <section class="result" id="result">
       <h2>YAY! 🎉</h2>
-      <img
-        class="fireworks"
+      <img class="fireworks"
         src="https://media.giphy.com/media/26ufdipQqU2lhNA4g/giphy.gif"
-        alt="Fireworks"
-      />
+        alt="Fireworks" />
       <a class="surprise-btn" href="surprise.html">
         I have a surprise for you click here
       </a>
@@ -243,14 +231,11 @@
 
     function resizeConfettiCanvas() {
       const dpr = Math.max(1, window.devicePixelRatio || 1);
-      confettiCanvas.width = Math.floor(window.innerWidth * dpr);
-      confettiCanvas.height = Math.floor(window.innerHeight * dpr);
-      confettiCanvas.style.width = "100vw";
-      confettiCanvas.style.height = "100vh";
+      confettiCanvas.width = window.innerWidth * dpr;
+      confettiCanvas.height = window.innerHeight * dpr;
     }
     resizeConfettiCanvas();
     window.addEventListener("resize", resizeConfettiCanvas);
-    window.addEventListener("orientationchange", () => setTimeout(resizeConfettiCanvas, 150));
 
     const confettiInstance = confetti.create(confettiCanvas, {
       resize: false,
@@ -259,7 +244,6 @@
 
     function fullScreenConfetti() {
       const end = Date.now() + 1400;
-
       (function frame() {
         confettiInstance({
           particleCount: 12,
@@ -333,9 +317,6 @@
       result.style.display = "block";
       resizeConfettiCanvas();
       fullScreenConfetti();
-
-      /* ✅ on mobile, bring result into view */
-      result.scrollIntoView({ behavior: "smooth", block: "start" });
     });
   </script>
 </body>
